@@ -3,6 +3,7 @@ import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 public class Percolation {
 
     private final WeightedQuickUnionUF uf;
+    private final WeightedQuickUnionUF ufForFullCheck;
     private boolean[] statuses;
     private final int n;
     private int count;
@@ -16,6 +17,7 @@ public class Percolation {
         this.n = n;
         int size = n * n;
         uf = new WeightedQuickUnionUF(size + 2);
+        ufForFullCheck = new WeightedQuickUnionUF(size + 2);
         statuses = new boolean[size + 2];
         for (int i = 0; i < size + 2; i++) {
             statuses[i] = false;
@@ -24,6 +26,7 @@ public class Percolation {
         statuses[size + 1] = true;
         for (int i = 1; i < n + 1; i++) {
             uf.union(i, 0);
+            ufForFullCheck.union(i, 0);
         }
         for (int i = size; i > size - n; i--) {
             uf.union(i, size + 1);
@@ -41,15 +44,19 @@ public class Percolation {
 
             if (isValid(row - 1, col) && isOpen(row - 1, col)) {
                 uf.union(getIndex(row, col), getIndex(row - 1, col));
+                ufForFullCheck.union(getIndex(row, col), getIndex(row - 1, col));
             }
             if (isValid(row + 1, col) && isOpen(row + 1, col)) {
                 uf.union(getIndex(row, col), getIndex(row + 1, col));
+                ufForFullCheck.union(getIndex(row, col), getIndex(row + 1, col));
             }
             if (isValid(row, col - 1) && isOpen(row, col - 1)) {
                 uf.union(getIndex(row, col), getIndex(row, col - 1));
+                ufForFullCheck.union(getIndex(row, col), getIndex(row, col - 1));
             }
             if (isValid(row, col + 1) && isOpen(row, col + 1)) {
                 uf.union(getIndex(row, col), getIndex(row, col + 1));
+                ufForFullCheck.union(getIndex(row, col), getIndex(row, col + 1));
             }
         }
     }
@@ -70,7 +77,7 @@ public class Percolation {
         if (!isOpen(row, col)) {
             return false;
         }
-        return uf.find(getIndex(row, col)) == uf.find(0);
+        return ufForFullCheck.find(getIndex(row, col)) == ufForFullCheck.find(0);
     }
 
     // returns the number of open sites
