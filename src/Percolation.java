@@ -25,7 +25,9 @@ public class Percolation {
 
     // opens the site (row, col) if it is not open already
     public void open(int row, int col) {
-        validate(row, col);
+        if (row < 1 || row > n || col < 1 || col > n) {
+            throw new IllegalArgumentException();
+        }
         if (!isOpen(row, col)) {
             grid[row - 1][col - 1] = true;
             count++;
@@ -34,13 +36,17 @@ public class Percolation {
 
     // is the site (row, col) open?
     public boolean isOpen(int row, int col) {
-        validate(row, col);
+        if (row < 1 || row > n || col < 1 || col > n) {
+            throw new IllegalArgumentException();
+        }
         return grid[row - 1][col - 1];
     }
 
     // is the site (row, col) full?
     public boolean isFull(int row, int col) {
-        validate(row, col);
+        if (row < 1 || row > n || col < 1 || col > n) {
+            throw new IllegalArgumentException();
+        }
         if (!isOpen(row, col)) {
             return false;
         }
@@ -55,11 +61,5 @@ public class Percolation {
     // does the system percolate?
     public boolean percolates() {
         return uf.find(0) == uf.find(n * n + 1);
-    }
-
-    private void validate(int row, int col) {
-        if (row < 1 || row > n || col < 1 || col > n) {
-            throw new IllegalArgumentException();
-        }
     }
 }
