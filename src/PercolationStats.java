@@ -3,9 +3,9 @@ import edu.princeton.cs.algs4.StdStats;
 
 public class PercolationStats {
 
-    private double[] thresholds;
-    private int trails;
-    private final double RATIO = 1.96;
+    private final double[] thresholds;
+    private final int trails;
+    private static final double RATIO = 1.96;
 
     // perform independent trials on an n-by-n grid
     public PercolationStats(int n, int trials) {
@@ -22,7 +22,7 @@ public class PercolationStats {
                     count++;
                 }
             } while (!p.percolates());
-            thresholds[i] = (double)count / n / n;
+            thresholds[i] = (double) count / n / n;
         }
     }
 

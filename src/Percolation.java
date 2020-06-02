@@ -2,9 +2,9 @@ import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 public class Percolation {
 
-    private WeightedQuickUnionUF uf;
+    private final WeightedQuickUnionUF uf;
     private boolean[] statuses;
-    private int n;
+    private final int n;
     private int count;
 
     // creates n-by-n grid, with all sites initially blocked
@@ -15,10 +15,18 @@ public class Percolation {
 
         this.n = n;
         int size = n * n;
-        uf = new WeightedQuickUnionUF(size);
-        statuses = new boolean[size];
-        for (int i = 0; i < size; i++) {
+        uf = new WeightedQuickUnionUF(size + 2);
+        statuses = new boolean[size + 2];
+        for (int i = 0; i < size + 2; i++) {
             statuses[i] = false;
+        }
+        statuses[0] = true;
+        statuses[size + 1] = true;
+        for (int i = 1; i < n + 1; i++) {
+            uf.union(i, 0);
+        }
+        for (int i = size; i >= size - n; i--) {
+            uf.union(i, size + 1);
         }
     }
 
@@ -30,6 +38,7 @@ public class Percolation {
         if (!isOpen(row, col)) {
             statuses[getIndex(row, col)] = true;
             count++;
+
             if (isValid(row - 1, col) && isOpen(row - 1, col)) {
                 uf.union(getIndex(row, col), getIndex(row - 1, col));
             }
@@ -61,12 +70,7 @@ public class Percolation {
         if (!isOpen(row, col)) {
             return false;
         }
-        for (int i = 0; i < n; i++) {
-            if (uf.find(i) == uf.find(getIndex(row, col))) {
-                return true;
-            }
-        }
-        return false;
+        return uf.find(getIndex(row, col)) == uf.find(0);
     }
 
     // returns the number of open sites
@@ -76,12 +80,7 @@ public class Percolation {
 
     // does the system percolate?
     public boolean percolates() {
-        for (int col = 1; col <= n; col++) {
-            if (isFull(n, col)) {
-                return true;
-            }
-        }
-        return false;
+        return uf.find(0) == uf.find(n * n + 1);
     }
 
     private boolean isValid(int row, int col) {
@@ -89,7 +88,7 @@ public class Percolation {
     }
 
     private int getIndex(int row, int col) {
-        return (row - 1) * n + col - 1;
+        return (row - 1) * n + col;
     }
 
 }
