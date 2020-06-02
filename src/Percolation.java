@@ -25,7 +25,7 @@ public class Percolation {
         for (int i = 1; i < n + 1; i++) {
             uf.union(i, 0);
         }
-        for (int i = size; i >= size - n; i--) {
+        for (int i = size; i > size - n; i--) {
             uf.union(i, size + 1);
         }
     }
@@ -80,6 +80,9 @@ public class Percolation {
 
     // does the system percolate?
     public boolean percolates() {
+        if (n == 1) {
+            return isOpen(1, 1);
+        }
         return uf.find(0) == uf.find(n * n + 1);
     }
 
@@ -91,4 +94,13 @@ public class Percolation {
         return (row - 1) * n + col;
     }
 
+    public static void main(String[] args){
+        Percolation percolation = new Percolation(2);
+        System.out.println(percolation.percolates());
+        percolation.open(1, 1);
+        percolation.open(1, 2);
+        System.out.println(percolation.percolates());
+        percolation.open(2, 2);
+        System.out.println(percolation.percolates());
+    }
 }
