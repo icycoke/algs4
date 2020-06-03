@@ -8,11 +8,12 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     private Item[] items;
     private int size;
     private int capacity;
+    private static final int DEFAULT_CAPACITY = 2;
 
     // construct an empty randomized queue
     public RandomizedQueue() {
-        items = (Item[]) new Object[10];
-        capacity = 10;
+        items = (Item[]) new Object[DEFAULT_CAPACITY];
+        capacity = DEFAULT_CAPACITY;
         size = 0;
     }
 
@@ -32,7 +33,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
             throw new IllegalArgumentException();
         }
         if (isFull()) {
-            grow();
+            resize(2 * capacity);
         }
         items[size] = item;
         size++;
@@ -42,6 +43,9 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     public Item dequeue() {
         if (isEmpty()) {
             throw new NoSuchElementException();
+        }
+        if (size * 4 == capacity) {
+            resize(capacity / 2);
         }
         int randomIndex = StdRandom.uniform(size);
         Item res = items[randomIndex];
@@ -60,41 +64,52 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     // return an independent iterator over items in random order
     public Iterator<Item> iterator() {
-        return new Iterator<Item>() {
-
-            int index = 0;
-
-            @Override
-            public boolean hasNext() {
-                return index < size;
-            }
-
-            @Override
-            public Item next() {
-                if (!hasNext()) {
-                    throw new NoSuchElementException();
-                }
-                return items[index++];
-            }
-
-            @Override
-            public void remove() {
-                throw new UnsupportedOperationException();
-            }
-        };
+        return new RandomizedQueueIterator();
     }
 
     private boolean isFull() {
         return size == capacity;
     }
 
-    private void grow() {
-        capacity *= 2;
-        Item[] grownItems = (Item[]) new Object[capacity];
+    private void resize(int resizedCapacity) {
+        Item[] resizedItems = (Item[]) new Object[resizedCapacity];
         for (int i = 0; i < size; i++) {
-            grownItems[i] = items[i];
+            resizedItems[i] = items[i];
         }
-        items = grownItems;
+        capacity = resizedCapacity;
+        items = resizedItems;
+    }
+
+    private class RandomizedQueueIterator implements Iterator<Item> {
+
+        private int[] randomIndexes;
+        private int curIndex;
+
+        public RandomizedQueueIterator() {
+            randomIndexes = new int[size];
+            for (int i = 0; i < size; i++) {
+                randomIndexes[i] = i;
+            }
+            StdRandom.shuffle(randomIndexes);
+        }
+
+        @Override
+        public boolean hasNext() {
+            return curIndex < size;
+        }
+
+        @Override
+        public Item next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            return items[randomIndexes[curIndex++]];
+        }
+
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
     }
 
     // unit testing (required)
