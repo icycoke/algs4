@@ -1,14 +1,14 @@
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class Deque<Item> implements Iterable<Item> {
+public class ArrayDeque<Item> implements Iterable<Item> {
 
     private int capacity;
     private int size;
     private Item[] items;
 
     // construct an empty deque
-    public Deque() {
+    public ArrayDeque() {
         capacity = 10;
         size = 0;
         items = (Item[]) new Object[10];
@@ -112,35 +112,35 @@ public class Deque<Item> implements Iterable<Item> {
 
     // unit testing (required)
     public static void main(String[] args) {
-        Deque<Integer> deque = new Deque<>();
-        for (int num : deque) {
+        ArrayDeque<Integer> arrayDeque = new ArrayDeque<>();
+        for (int num : arrayDeque) {
             System.out.print(num + " ");
         }
         System.out.println();
-        System.out.println(deque.isEmpty());
-        System.out.println(deque.size());
-        deque.addFirst(1);
-        for (int num : deque) {
+        System.out.println(arrayDeque.isEmpty());
+        System.out.println(arrayDeque.size());
+        arrayDeque.addFirst(1);
+        for (int num : arrayDeque) {
             System.out.print(num + " ");
         }
         System.out.println();
-        deque.addFirst(2);
-        for (int num : deque) {
+        arrayDeque.addFirst(2);
+        for (int num : arrayDeque) {
             System.out.print(num + " ");
         }
         System.out.println();
-        deque.addLast(3);
-        for (int num : deque) {
+        arrayDeque.addLast(3);
+        for (int num : arrayDeque) {
             System.out.print(num + " ");
         }
         System.out.println();
-        deque.removeFirst();
-        for (int num : deque) {
+        arrayDeque.removeFirst();
+        for (int num : arrayDeque) {
             System.out.print(num + " ");
         }
         System.out.println();
-        deque.removeLast();
-        for (int num : deque) {
+        arrayDeque.removeLast();
+        for (int num : arrayDeque) {
             System.out.print(num + " ");
         }
         System.out.println();
