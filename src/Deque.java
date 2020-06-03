@@ -114,6 +114,11 @@ public class Deque<Item> implements Iterable<Item> {
                 curNode = curNode.next;
                 return curNode.item;
             }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
         };
     }
 
@@ -132,6 +137,7 @@ public class Deque<Item> implements Iterable<Item> {
         for (int num : deque) {
             System.out.print(num);
         }
+        System.out.println(deque.size());
         System.out.println();
         deque.removeLast();
         for (int num : deque) {
