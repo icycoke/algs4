@@ -3,8 +3,8 @@ import java.util.NoSuchElementException;
 
 public class Deque<Item> implements Iterable<Item> {
 
-    private Node head;
-    private Node tail;
+    private final Node head;
+    private final Node tail;
     private int size;
 
     private class Node {
