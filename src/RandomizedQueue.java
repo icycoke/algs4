@@ -82,7 +82,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     private class RandomizedQueueIterator implements Iterator<Item> {
 
-        private int[] randomIndexes;
+        private final int[] randomIndexes;
         private int curIndex;
 
         public RandomizedQueueIterator() {
@@ -110,6 +110,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         public void remove() {
             throw new UnsupportedOperationException();
         }
+
     }
 
     // unit testing (required)
@@ -131,5 +132,4 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
             System.out.print(num);
         }
     }
-
 }
