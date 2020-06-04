@@ -15,7 +15,7 @@ All the source code files are under [/src/](https://github.com/icycoke/algs4/tre
 2. Source codes:
    1. [Percolation.java](https://github.com/icycoke/algs4/blob/master/src/Percolation.java)
    2. [PercolationStats.java](https://github.com/icycoke/algs4/blob/master/src/PercolationStats.java)
-3. Grader Feedback:[graderFeedbakc1.txt](https://github.com/icycoke/algs4/blob/master/graderFeedback/graderFeedbakc1.txt)
+3. Grader Feedback: [graderFeedbakc1.txt](https://github.com/icycoke/algs4/blob/master/graderFeedback/graderFeedbakc1.txt)
 4. Grade: 100/100
 
 ## Week2: Deques and Randomized Queues
@@ -24,7 +24,7 @@ All the source code files are under [/src/](https://github.com/icycoke/algs4/tre
    1. [Deque.java](https://github.com/icycoke/algs4/blob/master/src/Deque.java)
    2. [RandomizedQueue.java](https://github.com/icycoke/algs4/blob/master/src/RandomizedQueue.java)
    3. [Permutation.java](https://github.com/icycoke/algs4/blob/master/src/Permutation.java)
-3. Grader Feedback:[graderFeedbakc2.txt](https://github.com/icycoke/algs4/blob/master/graderFeedback/graderFeedbakc2.txt)
+3. Grader Feedback: [graderFeedbakc2.txt](https://github.com/icycoke/algs4/blob/master/graderFeedback/graderFeedbakc2.txt)
 4. Grade: 100/100
 
 ---
