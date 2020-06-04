@@ -11,7 +11,7 @@ API:          PASSED
 
 Spotbugs:     PASSED
 PMD:          PASSED
-Checkstyle:   FAILED (0 errors, 2 warnings)
+Checkstyle:   FAILED (0 errors, 1 warning)
 
 Correctness:  38/38 tests passed
 Memory:       8/8 tests passed
@@ -24,8 +24,8 @@ ASSESSMENT DETAILS
 
 The following files were submitted:
 ----------------------------------
-3.7K Jun  2 23:02 Percolation.java
-2.0K Jun  2 23:02 PercolationStats.java
+3.7K Jun  4 02:02 Percolation.java
+2.0K Jun  4 02:02 PercolationStats.java
 
 
 ********************************************************************************
@@ -73,9 +73,8 @@ PercolationStats:
 
 % checkstyle *.java
 *-----------------------------------------------------------
-[WARN] Percolation.java:104:43: '{' is not preceded with whitespace. [WhitespaceAround]
 [WARN] PercolationStats.java:8:5: Declare static variables before instance variables, constructors, and methods. [DeclarationOrder]
-Checkstyle ends with 0 errors and 2 warnings.
+Checkstyle ends with 0 errors and 1 warning.
 
 % custom checkstyle checks for Percolation.java
 *-----------------------------------------------------------
@@ -303,14 +302,14 @@ Running 17 total tests.
 
 Test 1: check formatting of output of main()
   % java-algs4 PercolationStats 20 10
-  mean = 0.58025
-  stddev = 0.04466620024632098
-  95% confidence interval = [0.5525656022681046, 0.6079343977318955]
+  mean = 0.5940000000000001
+  stddev = 0.0400555170287995
+  95% confidence interval = [0.5691733333333334, 0.6188266666666667]
 
   % java-algs4 PercolationStats 200 100
-  mean = 0.5939107500000005
-  stddev = 0.009543060474486005
-  95% confidence interval = [0.5920403101470012, 0.5957811898529998]
+  mean = 0.5910442499999999
+  stddev = 0.009383358129441372
+  95% confidence interval = [0.5892051118066294, 0.5928833881933705]
 
 ==> passed
 
@@ -509,11 +508,11 @@ Test 4: Call PercolationStats constructor and instance methods with trials = 3
 
          n  seconds log ratio
      ------------------------
-       724     0.15       2.3
-      1024     0.33       2.2
-      1448     0.87       2.8
-      2048     2.09       2.5
-      2896     5.03       2.5
+       724     0.15       2.4
+      1024     0.33       2.3
+      1448     0.86       2.7
+      2048     2.15       2.6
+      2896     5.17       2.5
 ==> passed
 
 
@@ -573,13 +572,13 @@ Test 1a-1e: Creates an n-by-n percolation system; open sites at random until
                                        2 * connected()
                  n       union()              + find()        constructor
 -----------------------------------------------------------------------------------
-=> passed       16          392                   312                   2         
-=> passed       32         1744                  1316                   2         
-=> passed       64         6426                  5074                   2         
-=> passed      128        25338                 20264                   2         
-=> passed      256        89818                 76476                   2         
-=> passed      512       379338                315028                   2         
-=> passed     1024      1443058               1229524                   2         
+=> passed       16          534                   362                   2         
+=> passed       32         1288                  1118                   2         
+=> passed       64         5644                  4762                   2         
+=> passed      128        23068                 19324                   2         
+=> passed      256        88218                 75750                   2         
+=> passed      512       372176                311790                   2         
+=> passed     1024      1485366               1247204                   2         
 ==> 7/7 tests passed
 
 
@@ -620,11 +619,11 @@ Test 3: Create an n-by-n percolation system; interleave calls to percolates()
                         log   union-find     log
          n  seconds   ratio   operations   ratio
      -------------------------------------------
-      1024     0.12     2.4      4217134     2.1
-      1448     0.31     2.7      8448720     2.0
-      2048     0.75     2.6     16769320     2.0
-      2896     1.93     2.7     33504108     2.0
-      4096     4.31     2.3     66827346     2.0
+      1024     0.12     2.4      4222002     2.1
+      1448     0.30     2.8      8373884     2.0
+      2048     0.77     2.7     16816528     2.0
+      2896     1.84     2.5     33466164     2.0
+      4096     4.09     2.3     66923690     2.0
 ==> passed
 
 
@@ -637,11 +636,11 @@ Test 4: Create an n-by-n percolation system; interleave calls to open(),
                         log   union-find     log
          n  seconds   ratio   operations   ratio
      -------------------------------------------
-      1024     0.11     1.9      4236334     2.0
-      1448     0.31     2.9      8449742     2.0
-      2048     0.74     2.6     16601744     1.9
-      2896     1.90     2.7     33630554     2.0
-      4096     4.62     2.6     66972458     2.0
+      1024     0.11     2.0      4188194     2.0
+      1448     0.30     2.8      8359824     2.0
+      2048     0.74     2.6     16730544     2.0
+      2896     1.86     2.6     33476778     2.0
+      4096     4.12     2.3     67179756     2.0
 ==> passed
 
 
