@@ -101,7 +101,7 @@ public class Percolation {
         return (row - 1) * n + col;
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Percolation percolation = new Percolation(2);
         System.out.println(percolation.percolates());
         percolation.open(1, 1);
