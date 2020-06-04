@@ -8,7 +8,7 @@ There are 5 assignments for 5 weeks study in total:
 4. 8 Puzzle
 5. Kd-Trees
 
-All the source code files are under [/src/](https://github.com/icycoke/algs4/tree/master/src) and corresponding grader feedbacks are under [/graderFeedback/](https://github.com/icycoke/algs4/tree/master/graderFeedback).
+All the source code files are under [/src/](https://github.com/icycoke/algs4/tree/master/src) and corresponding grader feedbacks are under [/graderFeedback/](https://github.com/icycoke/algs4/tree/master/graderFeedback)
 
 ## Week1: Percolation
 1. Specification: [Percolation](https://coursera.cs.princeton.edu/algs4/assignments/percolation/specification.php)
