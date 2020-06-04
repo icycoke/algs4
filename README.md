@@ -1,5 +1,5 @@
 # algs4
-This project contains all the source codes and corresponding grader feedbacks for the assignments of [Algorithms, Part I by Princeton University](https://www.coursera.org/learn/algorithms-part1?)
+This project contains all the solutions with full marks and corresponding grader feedbacks for the assignments of [Algorithms, Part I by Princeton University](https://www.coursera.org/learn/algorithms-part1?)
 
 There are 5 assignments for 5 weeks study in total:
 1. Percolation
