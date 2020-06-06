@@ -37,7 +37,7 @@ All the source code files are under [/src/](https://github.com/icycoke/algs4/tre
 3. Grader feedback: [graderFeedback3.txt](https://github.com/icycoke/algs4/blob/master/graderFeedback/graderFeedback3.txt)
 4. Grade: 100/100
 
-* <i>Based on my observations and hundreds of tests, the auto grader for this assignment may feedback some misleading suggestions. For instance, it told me to avoid using toString() method which was actually not used in my code. However, this issue went away after I fix a bug (I wrongly coded '<' to '>') which is not related to the issue. Different misleading suggestions occurred under different circumstances many times. As a result, I suggest you to consider the bugs not referring to the feedback when you meet a similar situation.</i>
+* <i>Based on my observations and hundreds of tests, the auto grader for this assignment may feedback some misleading suggestions. For instance, it told me to avoid using toString() method which was actually not used in my code. However, this issue went away after I fix a bug (I wrongly coded '<' to '>') which was not related to the issue. Different misleading suggestions occurred under different circumstances many times. As a result, I suggest you to consider the bugs without referring to the feedback when you meet a similar situation.</i>
 
 ---
 ##To be continued
