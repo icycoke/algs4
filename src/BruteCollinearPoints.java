@@ -4,18 +4,23 @@ import java.util.List;
 
 public class BruteCollinearPoints {
 
+    // the list of segments that contains 4 points
     private List<LineSegment> lineSegmentList;
 
     public BruteCollinearPoints(Point[] points) {
         validate(points);
 
         lineSegmentList = new ArrayList<>();
+
+        // number of points
         int numOfPoints = points.length;
 
+        // if the number of points is less than 4, there is no valid segment
         if (numOfPoints < 4) {
             return;
         }
 
+        // iterate every 4 points and check whether they are in the same line
         for (int p = 0; p < numOfPoints - 3; p++) {
             for (int q = p + 1; q < numOfPoints - 2; q++) {
                 for (int r = q + 1; r < points.length - 1; r++) {
@@ -33,14 +38,26 @@ public class BruteCollinearPoints {
 
     }
 
+    /**
+     * Get the number of segments
+     * @return the number of segments
+     */
     public int numberOfSegments() {
         return lineSegmentList.size();
     }
 
+    /**
+     * Get the segments
+     * @return the array contains all valid segments
+     */
     public LineSegment[] segments() {
         return lineSegmentList.toArray(new LineSegment[0]);
     }
 
+    /**
+     * Check if the points are valid
+     * @param points the input points
+     */
     private void validate(Point[] points) {
         if (points == null)
             throw new IllegalArgumentException();
