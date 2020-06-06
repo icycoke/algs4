@@ -9,12 +9,14 @@ public class BruteCollinearPoints {
 
     public BruteCollinearPoints(Point[] points) {
         validate(points);
+
+        lineSegmentList = new ArrayList<>();
+
         // if the number of points is less than 4, there is no valid segment
         if (points.length < 4) {
             return;
         }
 
-        lineSegmentList = new ArrayList<>();
 
         // number of points
         int numOfPoints = points.length;
