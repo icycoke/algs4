@@ -10,47 +10,49 @@ public class FastCollinearPoints {
     public FastCollinearPoints(Point[] points) {
         validate(points);
 
-        //if the number of points is less than 4, there is no valid segment
+        lineSegmentList = new ArrayList<>();
+
+        // if the number of points is less than 4, there is no valid segment
         if (points.length < 4) {
             return;
         }
 
-        lineSegmentList = new ArrayList<>();
-
         // number of points
         int numOfPoints = points.length;
         // sorted array of all points
-        Point[] sortedPoints = points.clone();
-        Arrays.sort(sortedPoints, Point::compareTo);
+        Point[] pointsCopy = points.clone();
+        Arrays.sort(pointsCopy);
 
-        for (int i = 0; i < numOfPoints; i++) {
+        for (int i = 0; i < numOfPoints - 3; i++) {
             // array contains all points sorted by the slope order from the origin point
-            Point[] pointArr = sortedPoints.clone();
-            Arrays.sort(pointArr, sortedPoints[i].slopeOrder());
+            Arrays.sort(pointsCopy);
+            Arrays.sort(pointsCopy, pointsCopy[i].slopeOrder());
 
             // origin point
-            Point originPoint = pointArr[0];
-            // slope of the origin point to the slow pointer
-            double slopeSlow = pointArr[0].slopeTo(pointArr[1]);
-            // slope of the origin point to the fast pointer
-            double slopeFast = pointArr[0].slopeTo(pointArr[1]);
+            Point originPoint = pointsCopy[0];
             // iterate all possible points by two pointers and generate valid segments
-            for (int ptrSlow = 1, ptrFast = 1; ptrSlow < numOfPoints - 2; ptrSlow = ptrFast, slopeSlow = slopeFast) {
-                while (ptrFast < numOfPoints && Double.compare(slopeSlow, slopeFast) == 0) {
+            for (int ptrSlow = 1, ptrFast = 2; ptrFast < numOfPoints; ptrFast++) {
+
+                while (ptrFast < numOfPoints
+                        && Double.compare(originPoint.slopeTo(pointsCopy[ptrSlow]), originPoint.slopeTo(pointsCopy[ptrFast])) == 0) {
                     ptrFast++;
-                    slopeFast = originPoint.slopeTo(pointArr[ptrFast]);
                 }
+
                 // number of adjacent points
                 int numOfAdjacentPoints = ptrFast - ptrSlow + 1;
-                if (numOfAdjacentPoints >= 4) {
-                    lineSegmentList.add(new LineSegment(originPoint, pointArr[ptrFast - 1]));
+                // check if the number of adjacent points is greater than 4 and the is not a duplicate segment
+                if (numOfAdjacentPoints >= 4 && originPoint.compareTo(pointsCopy[ptrSlow]) < 0) {
+                    lineSegmentList.add(new LineSegment(originPoint, pointsCopy[ptrFast - 1]));
                 }
+
+                ptrSlow = ptrFast;
             }
         }
     }
 
     /**
      * Get the number of segments
+     *
      * @return number of segments
      */
     public int numberOfSegments() {
@@ -59,6 +61,7 @@ public class FastCollinearPoints {
 
     /**
      * Get the segments
+     *
      * @return array contains all valid segments
      */
     public LineSegment[] segments() {
@@ -67,6 +70,7 @@ public class FastCollinearPoints {
 
     /**
      * Check if the points are valid
+     *
      * @param points input points
      */
     private void validate(Point[] points) {
