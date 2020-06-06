@@ -1,5 +1,5 @@
 # algs4
-This project contains all the solutions with full marks and corresponding grader feedbacks for the assignments of [Algorithms, Part I by Princeton University](https://www.coursera.org/learn/algorithms-part1?). This project is built to help students learn better rather than escape the test. <b> DO NOT CHEAT PLEASE.</b>
+This project contains all the solutions with full marks and corresponding grader feedbacks for the assignments of [Algorithms, Part I by Princeton University](https://www.coursera.org/learn/algorithms-part1?). The project is built to help students learn better rather than escape the test. <b> DO NOT CHEAT PLEASE.</b>
 
 There are 5 assignments for 5 weeks study in total:
 1. Percolation
