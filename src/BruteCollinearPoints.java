@@ -9,16 +9,16 @@ public class BruteCollinearPoints {
 
     public BruteCollinearPoints(Point[] points) {
         validate(points);
+        // if the number of points is less than 4, there is no valid segment
+        if (points.length < 4) {
+            return;
+        }
 
         lineSegmentList = new ArrayList<>();
 
         // number of points
         int numOfPoints = points.length;
 
-        // if the number of points is less than 4, there is no valid segment
-        if (numOfPoints < 4) {
-            return;
-        }
 
         // iterate every 4 points and check whether they are in the same line
         for (int p = 0; p < numOfPoints - 3; p++) {
