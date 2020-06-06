@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class BruteCollinearPoints {
@@ -6,39 +7,24 @@ public class BruteCollinearPoints {
     private List<LineSegment> lineSegmentList;
 
     public BruteCollinearPoints(Point[] points) {
-        if (points == null) {
-            throw new IllegalArgumentException();
-        }
-        if (points.length < 4) {
+        validate(points);
+
+        lineSegmentList = new ArrayList<>();
+        int numOfPoints = points.length;
+
+        if (numOfPoints < 4) {
             return;
         }
-        lineSegmentList = new ArrayList<>();
-        for (int p = 0; p < points.length - 3; p++) {
-            for (int q = p + 1; q < points.length - 2; q++) {
-                Point firstPoint = points[p];
-                double firstSlope = firstPoint.slopeTo(points[q]);
+
+        for (int p = 0; p < numOfPoints - 3; p++) {
+            for (int q = p + 1; q < numOfPoints - 2; q++) {
                 for (int r = q + 1; r < points.length - 1; r++) {
                     for (int s = r + 1; s < points.length; s++) {
-                        if (points[p] == null || points[q] == null || points[r] == null || points[s] == null) {
-                            throw new IllegalArgumentException();
-                        }
-                        Point endPoint1 = points[p];
-                        Point endPoint2 = points[p];
-                        int[] toBeCompared = new int[]{q, r, s};
-                        boolean isInLine = true;
-                        for (int index : toBeCompared) {
-                            if (firstPoint.compareTo(points[index]) == 0)
-                                throw new IllegalArgumentException();
-                            if (points[index].compareTo(endPoint1) < 0)
-                                endPoint1 = points[index];
-                            if (points[index].compareTo(endPoint2) > 0)
-                                endPoint2 = points[index];
-                            if (Double.compare(firstPoint.slopeTo(points[index]), firstSlope) != 0) {
-                                isInLine = false;
-                            }
-                        }
-                        if (isInLine) {
-                            lineSegmentList.add(new LineSegment(endPoint1, endPoint2));
+                        if (Double.compare(points[p].slopeTo(points[q]), points[p].slopeTo(points[r])) == 0
+                                && Double.compare(points[p].slopeTo(points[q]), points[p].slopeTo(points[s])) == 0) {
+                            Point[] pointsInLine = new Point[]{points[p], points[q], points[r], points[s]};
+                            Arrays.sort(pointsInLine, Point::compareTo);
+                            lineSegmentList.add(new LineSegment(pointsInLine[0], pointsInLine[3]));
                         }
                     }
                 }
@@ -53,6 +39,23 @@ public class BruteCollinearPoints {
 
     public LineSegment[] segments() {
         return lineSegmentList.toArray(new LineSegment[0]);
+    }
+
+    private void validate(Point[] points) {
+        if (points == null)
+            throw new IllegalArgumentException();
+
+        for (Point point : points) {
+            if (point == null)
+                throw new IllegalArgumentException();
+        }
+
+        for (int i = 0; i < points.length; i++) {
+            for (int j = i + 1; j < points.length; j++) {
+                if (points[i].compareTo(points[j]) == 0)
+                    throw new IllegalArgumentException();
+            }
+        }
     }
 
 }
