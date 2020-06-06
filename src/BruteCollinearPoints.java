@@ -4,7 +4,7 @@ import java.util.List;
 
 public class BruteCollinearPoints {
 
-    // the list of segments that contains 4 points
+    // list of segments that contains 4 points
     private List<LineSegment> lineSegmentList;
 
     public BruteCollinearPoints(Point[] points) {
@@ -40,7 +40,7 @@ public class BruteCollinearPoints {
 
     /**
      * Get the number of segments
-     * @return the number of segments
+     * @return number of segments
      */
     public int numberOfSegments() {
         return lineSegmentList.size();
@@ -48,7 +48,7 @@ public class BruteCollinearPoints {
 
     /**
      * Get the segments
-     * @return the array contains all valid segments
+     * @return array contains all valid segments
      */
     public LineSegment[] segments() {
         return lineSegmentList.toArray(new LineSegment[0]);
@@ -56,7 +56,7 @@ public class BruteCollinearPoints {
 
     /**
      * Check if the points are valid
-     * @param points the input points
+     * @param points input points
      */
     private void validate(Point[] points) {
         if (points == null)
