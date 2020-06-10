@@ -8,8 +8,6 @@ public class Board {
     private int[][] tiles;
     // length of the board
     private final int n;
-    // goal board
-    private final int[][] goal;
 
     // create a board from an n-by-n array of tiles,
     // where tiles[row][col] = tile at (row, col)
@@ -21,13 +19,6 @@ public class Board {
                 this.tiles[i][j] = tiles[i][j];
             }
         }
-        goal = new int[n][n];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                goal[i][j] = i * n + j + 1;
-            }
-        }
-        goal[n - 1][n - 1] = 0;
     }
 
     // string representation of this board
@@ -77,11 +68,24 @@ public class Board {
 
     // is this board the goal board?
     public boolean isGoal() {
+        int[][] goal = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                goal[i][j] = i * n + j + 1;
+            }
+        }
+        goal[n - 1][n - 1] = 0;
         return Arrays.deepEquals(tiles, goal);
     }
 
     // does this board equal y?
     public boolean equals(Object y) {
+        if (y == null) {
+            return false;
+        }
+        if (!(y instanceof Board)) {
+            return false;
+        }
         return Arrays.deepEquals(tiles, ((Board) y).tiles);
     }
 
