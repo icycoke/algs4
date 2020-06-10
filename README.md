@@ -8,7 +8,7 @@ There are 5 assignments for 5 weeks study in total:
 4. 8 Puzzle
 5. Kd-Trees
 
-All the source code files are under [/src/](https://github.com/icycoke/algs4/tree/master/src) and corresponding grader feedbacks are under [/graderFeedback/](https://github.com/icycoke/algs4/tree/master/graderFeedback)
+All the source code files are under [/src/](https://github.com/icycoke/algs4/tree/master/src) and corresponding grader feedbacks are under [/graderFeedback/](https://github.com/icycoke/algs4/tree/master/graderFeedback).
 
 ## Week1: Percolation
 1. Specification: [Percolation](https://coursera.cs.princeton.edu/algs4/assignments/percolation/specification.php)
@@ -39,5 +39,14 @@ All the source code files are under [/src/](https://github.com/icycoke/algs4/tre
 
 * <i>Based on my observations and hundreds of tests, the auto grader for this assignment may feedback some misleading suggestions. For instance, it told me to avoid using toString() method which was actually not used in my code. However, this issue went away after I fix a bug (I wrongly coded '<' to '>') which was not related to the issue. Different misleading suggestions occurred under different circumstances many times. As a result, I suggest you to consider the bugs without referring to the feedback when you meet a similar situation.</i>
 
+## Week4: 8 Puzzle
+1. Specification: [8 Puzzle](https://coursera.cs.princeton.edu/algs4/assignments/8puzzle/specification.php)
+2. Source codes:
+   1. [Board.java](https://github.com/icycoke/algs4/blob/master/src/Board.java)
+   2. [Solver.java](https://github.com/icycoke/algs4/blob/master/src/Solver.java)
+3. Grader feedback: [graderFeedback4.txt](https://github.com/icycoke/algs4/blob/master/graderFeedback/graderFeedback4.txt)
+4. Grade: 100/100
+
+* <i>Tip: If you are stuck with the memory issue, try to use more local variables instead of instance variables.</i>
 ---
 ##To be continued
