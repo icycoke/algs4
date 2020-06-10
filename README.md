@@ -10,6 +10,8 @@ There are 5 assignments for 5 weeks study in total:
 
 All the source code files are under [/src/](https://github.com/icycoke/algs4/tree/master/src) and corresponding grader feedbacks are under [/graderFeedback/](https://github.com/icycoke/algs4/tree/master/graderFeedback).
 
+Because of the auto grader disallow student to submit class files in any package, I didn't create directories under [/src/](https://github.com/icycoke/algs4/tree/master/src). However you can easily tell which source files belong to which week's task by the following information.
+
 ## Week1: Percolation
 1. Specification: [Percolation](https://coursera.cs.princeton.edu/algs4/assignments/percolation/specification.php)
 2. Source codes:
