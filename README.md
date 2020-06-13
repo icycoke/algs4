@@ -50,5 +50,12 @@ Because of the auto grader disallow student to submit class files in any package
 4. Grade: 100/100
 
 * <i>Tip: If you are stuck with the memory issue, try to use more local variables instead of instance variables.</i>
+
+## Week5: Kd Trees
+1. Specification: [Kd Trees](https://coursera.cs.princeton.edu/algs4/assignments/kdtree/specification.php)
+2. Source codes:
+   1. [PointSET.java](https://github.com/icycoke/algs4/blob/master/src/PointSET.java)
+   2. [KdTree.java](https://github.com/icycoke/algs4/blob/master/src/KdTree.java)
+3. Grader feedback: [graderFeedback5.txt](https://github.com/icycoke/algs4/blob/master/graderFeedback/graderFeedback5.txt)
+4. Grade: 100/100
 ---
-##To be continued
